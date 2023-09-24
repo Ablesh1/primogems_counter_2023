@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class PrimogemsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'primogems'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "primogems"

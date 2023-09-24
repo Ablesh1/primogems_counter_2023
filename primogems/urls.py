@@ -5,5 +5,5 @@ from . import views
 app_name = "primogems"
 urlpatterns = [
     path("", views.primogems, name="primogems"),
-    path('initialize/', views.initialize, name='initialize'),
+    path("initialize/", views.initialize, name="initialize"),
 ]
