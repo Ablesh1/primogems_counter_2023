@@ -110,13 +110,6 @@ def count_abyss(period, months_left):
     days_of_month = calendar.monthrange(now.year, now.month)[1]
     days_of_months_left = days_of_month - now.day
 
-    """
-    print("\nDays of month: " + str(days_of_month))
-    print("Days of month left: " + str(days_of_months_left))
-    print("\nPeriod: " + str(period))
-    print("Abyss: " + str(abyss_left))
-    """
-
     # New abyss starts in the 1st and the 16th day of each month
     # We consider that ongoing abyss is done for current month
     # Current month:
@@ -229,9 +222,6 @@ def count(
 
     print("\nGlitter used: \t\t" + str(final_star - final_star % 5))
     print("Glitter unused: \t" + str(final_star % 5))
-
-    print("\nPulls done:\t\t" + str(pity))
-    print("Pulls left:\t\t" + str(accumulated // 160))
 
     print("\n" + str(p))
     duplicate = "\tPulls"
