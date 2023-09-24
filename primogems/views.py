@@ -22,6 +22,7 @@ def initialize(request):
             date_input = form.cleaned_data["date_input"]
             primogems_input = form.cleaned_data["primogems_input"]
             starglitter_input = form.cleaned_data["starglitter_input"]
+            pity_input = form.cleaned_data["pity_input"]
             events_input = form.cleaned_data["events_input"]
             quests_input = form.cleaned_data["quests_input"]
             others_input = form.cleaned_data["others_input"]
@@ -30,6 +31,7 @@ def initialize(request):
                 date_input,
                 primogems_input,
                 starglitter_input,
+                pity_input,
                 events_input,
                 quests_input,
                 others_input,
@@ -154,15 +156,8 @@ def count_abyss(period, months_left):
     return abyss_left
 
 
-def count_list(my_list):
-    list_left = 0
-    for i in range(0, len(my_list)):
-        list_left += my_list[i]
-    return list_left
-
-
-def count_star_glitter(primogems, star_glitter):
-    pulls_number = primogems // 160
+def count_star_glitter(primo, star_glitter):
+    pulls_number = primo // 160
     golden = pulls_number // 90
     silver = (pulls_number - golden * 10) // 10
 
@@ -174,16 +169,17 @@ def count_star_glitter(primogems, star_glitter):
 # Here the primogems are calculated
 def count(
     amount,
-    pulls_done,
-    days_left,
-    months_left,
-    years_left,
-    abyss_left,
     star,
+    pity,
+    years_left,
+    months_left,
+    days_left,
+    abyss_left,
     events,
     quests,
     others,
 ):
+    # Basic methods of acquiring primogems
     daily_tasks = days_left * 60
     welkin = days_left * 90
     abyss = abyss_left * 450
@@ -191,10 +187,10 @@ def count(
 
     # Accumulated primo (up to date) including actual + actual based star glitter
     total = amount + others
-    star = count_star_glitter(total, star)
-    accumulated = total + star // 5 * 160
+    actual_star = count_star_glitter(total, star)
+    accumulated = total + actual_star // 5 * 160
 
-    # Future amount of star glitter
+    # Final future amount of star glitter
     total = (
         amount
         + daily_tasks
@@ -205,10 +201,10 @@ def count(
         + quests
         + others
     )
-    star = count_star_glitter(total, star)
+    final_star = count_star_glitter(total, star)
 
     # Future amount of primo
-    total = total + star // 5 * 160
+    total = total + final_star // 5 * 160
 
     # Future amount of earned primo
     earned = total - accumulated
@@ -226,14 +222,10 @@ def count(
         others,
     )
 
-    print("\nDays left:\t\t" + str(days_left))
-    print("Months left:\t\t" + str(months_left))
-    print("Years left:\t\t" + str(years_left))
+    print("\nGlitter used: \t\t" + str(final_star - final_star % 5))
+    print("Glitter unused: \t" + str(final_star % 5))
 
-    print("\nGlitter used: \t\t" + str(star - star % 5))
-    print("Glitter unused: \t" + str(star % 5))
-
-    print("\nPulls done:\t\t" + str(pulls_done))
+    print("\nPulls done:\t\t" + str(pity))
     print("Pulls left:\t\t" + str(accumulated // 160))
 
     print("\n" + str(p))
@@ -260,33 +252,29 @@ def count(
         + duplicate
     )
 
-    result = [accumulated, earned, total, pulls_done, accumulated // 160, total // 160]
+    result = [
+        accumulated,
+        earned,
+        total,
+        accumulated // 160,
+        earned // 160,
+        total // 160,
+        days_left,
+        months_left,
+        years_left,
+    ]
     return result
 
 
 # Here the variables are passed to multiple functions,
 # the returns of which are passed to count()
-def start(a, p, y, m, d, s, e, q, o):
-    days_left = count_days(y, m, d)
-    months_left = count_months(y, m)
+def start(a, s, p, y, m, d, e, q, o):
     years_left = count_years(y)
+    months_left = count_months(y, m)
+    days_left = count_days(y, m, d)
     abyss_left = count_abyss(days_left, months_left)
-    events_left = count_list(e)
-    quests_left = count_list(q)
-    others_left = count_list(o)
 
-    return count(
-        a,
-        p,
-        days_left,
-        months_left,
-        years_left,
-        abyss_left,
-        s,
-        events_left,
-        quests_left,
-        others_left,
-    )
+    return count(a, s, p, years_left, months_left, days_left, abyss_left, e, q, o)
 
 
 # Here we assign values to the variables that are passed to start()
@@ -294,6 +282,7 @@ def main(
     input_date,
     input_primogems,
     input_starglitter,
+    input_pity,
     input_events,
     input_quests,
     input_others,
@@ -302,38 +291,18 @@ def main(
     components = str(input_date).split("-")
 
     # Assign components to variables (assuming the input format is always '%Y-%m-%d')
-    choose_year = int(components[0])
-    choose_month = int(components[1])
-    choose_day = int(components[2])
-
-    # Assign other input values
-    amount_of_primogems = input_primogems
-    amount_of_star_glitter = input_starglitter
-    amount_of_pulls_done = 0
-
-    events_list = [input_events]
-    quests_list = [input_quests]
-    others_list = [input_others]
-
-    # Print the variables for debug
-    print(f"Date: {input_date}")
-    print(f"Year: {choose_year}")
-    print(f"Month: {choose_month}")
-    print(f"Day: {choose_day}")
-    print(f"Primogems: {input_primogems}")
-    print(f"StarGlitter: {input_starglitter}")
-    print(f"Events: {input_events}")
-    print(f"Quests: {input_quests}")
-    print(f"Others: {input_others}")
+    input_year = int(components[0])
+    input_month = int(components[1])
+    input_day = int(components[2])
 
     return start(
-        amount_of_primogems,
-        amount_of_pulls_done,
-        choose_year,
-        choose_month,
-        choose_day,
-        amount_of_star_glitter,
-        events_list,
-        quests_list,
-        others_list,
+        input_primogems,
+        input_starglitter,
+        input_pity,
+        input_year,
+        input_month,
+        input_day,
+        input_events,
+        input_quests,
+        input_others,
     )
