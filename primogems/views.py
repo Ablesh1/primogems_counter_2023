@@ -156,11 +156,16 @@ def count_abyss(period, months_left):
     return abyss_left
 
 
-def count_star_glitter(primo, star_glitter):
+def count_star_glitter(primo, star_glitter, pity):
     pulls_number = primo // 160
-    golden = pulls_number // 90
-    silver = (pulls_number - golden * 10) // 10
 
+    # Pity affects the number of golden star glitter
+    if pulls_number + pity >= 90:
+        golden = (pulls_number + pity) // 90
+    else:
+        golden = pulls_number // 90
+
+    silver = (pulls_number - golden * 10) // 10
     star_glitter = golden * 10 + silver * 2 + star_glitter
 
     return star_glitter
@@ -187,7 +192,7 @@ def count(
 
     # Accumulated primo (up to date) including actual + actual based star glitter
     total = amount + others
-    actual_star = count_star_glitter(total, star)
+    actual_star = count_star_glitter(total, star, pity)
     accumulated = total + actual_star // 5 * 160
 
     # Final future amount of star glitter
@@ -201,7 +206,7 @@ def count(
         + quests
         + others
     )
-    final_star = count_star_glitter(total, star)
+    final_star = count_star_glitter(total, star, pity)
 
     # Future amount of primo
     total = total + final_star // 5 * 160
