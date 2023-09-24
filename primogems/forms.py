@@ -13,6 +13,11 @@ def validate_positive(value):
         raise ValidationError("Enter a positive value")
 
 
+def validate_pity(value):
+    if value >= 90 or value < 0:
+        raise ValidationError("Enter the pity rate correctly.")
+
+
 class MyForm(forms.Form):
     date_input = forms.DateField(
         label="Choose a date",
@@ -43,6 +48,17 @@ class MyForm(forms.Form):
             }
         ),
         validators=[validate_positive],
+        required=True,
+    )
+    pity_input = forms.IntegerField(
+        label="Enter actual pity",
+        widget=forms.NumberInput(
+            attrs={
+                "style": "text-align: center; padding: 0px",
+                "placeholder": "Enter a positive value",
+            }
+        ),
+        validators=[validate_pity],
         required=True,
     )
     events_input = forms.IntegerField(
@@ -76,6 +92,7 @@ class MyForm(forms.Form):
         self.fields["date_input"].initial = date.today()
         # self.fields['primogems_input'].initial = 0
         # self.fields['starglitter_input'].initial = 0
-        self.fields["events_input"].initial = 1420
-        self.fields["quests_input"].initial = 30
-        self.fields["others_input"].initial = 0
+        self.fields["pity_input"].initial = 0
+        self.fields["events_input"].initial = 3200
+        self.fields["quests_input"].initial = 0
+        self.fields["others_input"].initial = 1900
