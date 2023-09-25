@@ -40,26 +40,28 @@ class MyForm(forms.Form):
         required=True,
     )
     starglitter_input = forms.IntegerField(
-        label="Enter actual starglitter",
+        label="Starglitter",
         widget=forms.NumberInput(
             attrs={
-                "style": "text-align: center; padding: 0px",
-                "placeholder": "Enter a positive value",
+                "style": "text-align: center; padding: 0px; width: 100%;",
             }
         ),
         validators=[validate_positive],
         required=True,
     )
     pity_input = forms.IntegerField(
-        label="Enter actual pity",
+        label="Pity",
         widget=forms.NumberInput(
             attrs={
-                "style": "text-align: center; padding: 0px",
-                "placeholder": "Enter a positive value",
+                "style": "text-align: center; padding: 0px; width: 100%;",
             }
         ),
         validators=[validate_pity],
         required=True,
+    )
+    welkin_input = forms.BooleanField(
+        label="Welkin",
+        widget=forms.CheckboxInput(),
     )
     events_input = forms.IntegerField(
         label="Events",
@@ -90,9 +92,10 @@ class MyForm(forms.Form):
         super().__init__(*args, **kwargs)
         # Initial values of fields
         self.fields["date_input"].initial = date.today()
-        # self.fields['primogems_input'].initial = 0
-        # self.fields['starglitter_input'].initial = 0
+        self.fields["primogems_input"].initial = 10830
+        self.fields["starglitter_input"].initial = 28
         self.fields["pity_input"].initial = 0
-        self.fields["events_input"].initial = 3200
+        self.fields["welkin_input"].initial = True
+        self.fields["events_input"].initial = 1600
         self.fields["quests_input"].initial = 0
         self.fields["others_input"].initial = 1900
