@@ -62,6 +62,7 @@ class MyForm(forms.Form):
     welkin_input = forms.BooleanField(
         label="Welkin",
         widget=forms.CheckboxInput(),
+        required=False,
     )
     events_input = forms.IntegerField(
         label="Events",
