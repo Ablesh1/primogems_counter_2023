@@ -154,6 +154,13 @@
                                             {{ form.date_input.errors.0 }}
                                         </h6>
                                     </li>
+                                    {% elif form.welkin_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                         <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.welkin_input.errors.0 }}
+                                        </h6>
+                                    </li>
                                     {% elif form.primogems_input.errors %}
                                     <li class="list-group-item d-grid gap-2 rounded">
                                         <!-- Check for validation errors -->
@@ -166,6 +173,13 @@
                                         <!-- Check for validation errors -->
                                         <h6 class="error text-center mb-0">
                                             {{ form.starglitter_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.pity_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.pity_input.errors.0 }}
                                         </h6>
                                     </li>
                                     {% elif form.events_input.errors %}
