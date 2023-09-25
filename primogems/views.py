@@ -20,6 +20,7 @@ def initialize(request):
         if form.is_valid():
             # Extract the input data from the form
             date_input = form.cleaned_data["date_input"]
+            welkin_input = form.cleaned_data["welkin_input"]
             primogems_input = form.cleaned_data["primogems_input"]
             starglitter_input = form.cleaned_data["starglitter_input"]
             pity_input = form.cleaned_data["pity_input"]
@@ -29,6 +30,7 @@ def initialize(request):
             # Call the main() method with the input data
             result = main(
                 date_input,
+                welkin_input,
                 primogems_input,
                 starglitter_input,
                 pity_input,
@@ -168,6 +170,7 @@ def count_star_glitter(primo, star_glitter, pity):
 def count(
     amount,
     star,
+    is_welkin,
     pity,
     years_left,
     months_left,
@@ -177,11 +180,17 @@ def count(
     quests,
     others,
 ):
+
     # Basic methods of acquiring primogems
     daily_tasks = days_left * 60
-    welkin = days_left * 90
     abyss = abyss_left * 450
     paimon_bargains = months_left * 5 * 160
+
+    # Check if welkin is purchased
+    if is_welkin:
+        welkin = days_left * 90
+    else:
+        welkin = 0
 
     # Accumulated primo (up to date) including actual + actual based star glitter
     total = amount + others
@@ -263,18 +272,19 @@ def count(
 
 # Here the variables are passed to multiple functions,
 # the returns of which are passed to count()
-def start(a, s, p, y, m, d, e, q, o):
+def start(a, s, w, p, y, m, d, e, q, o):
     years_left = count_years(y)
     months_left = count_months(y, m)
     days_left = count_days(y, m, d)
     abyss_left = count_abyss(days_left, months_left)
 
-    return count(a, s, p, years_left, months_left, days_left, abyss_left, e, q, o)
+    return count(a, s, w, p, years_left, months_left, days_left, abyss_left, e, q, o)
 
 
 # Here we assign values to the variables that are passed to start()
 def main(
     input_date,
+    input_welkin,
     input_primogems,
     input_starglitter,
     input_pity,
@@ -293,6 +303,7 @@ def main(
     return start(
         input_primogems,
         input_starglitter,
+        input_welkin,
         input_pity,
         input_year,
         input_month,
