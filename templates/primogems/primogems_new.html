@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Primogems counter</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="https://genshin.hoyoverse.com/en/">Website</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav" id="menu-buttons">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://genshin-impact.fandom.com/wiki/Genshin_Impact">Fandom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://genshin-impact-map.appsample.com/">Map</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4">Primogems counter</h1>
+                <hr class="jumbotron-line">
+                <p class="lead">Website devoted to the Genshin Impact exclusive currency</p>
+            </div>
+        </div>
+        <div class="container main">
+            <div class="col-xxl-3">
+                <div class="card left-side border-0">
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'primogems:initialize' %}">
+                            {% csrf_token %}
+                                <ul class="list-group">
+                                    <!-- Button field -->
+                                    <button type="submit" class="primogems-button">Count primogems</button>
+                                    <hr class="left-col-line">
+                                    <!-- List field: Date, Welkin-->
+                                    <li class="list-group-item border-0">
+                                        <div class="row date-welkin">
+                                            <div class="col-8">
+                                                <div class="date-field">
+                                                    <h5 class="input-label">{{ form.date_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.date_input }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="welkin-field">
+                                                    <h5 class="input-label">{{ form.welkin_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.welkin_input }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- Primogems field -->
+                                    <li class="list-group-item border-0">
+                                        <div class="row primogems">
+                                            <div class="col-12">
+                                                <div class="primogems-field">
+                                                    <h5 class="input-label">{{ form.primogems_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.primogems_input }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- List field: Starglitter, Pity-->
+                                    <li class="list-group-item border-0">
+                                        <div class="row star-pity">
+                                            <div class="col-6">
+                                                <div class="star-field">
+                                                    <h5 class="input-label">{{ form.starglitter_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.starglitter_input }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="pity-field">
+                                                    <h5 class="input-label">{{ form.pity_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.pity_input }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- List field: Events, Quests -->
+                                    <li class="list-group-item border-0">
+                                        <div class="row events-quests">
+                                            <div class="col-6">
+                                                <div class="events-field">
+                                                    <h5 class="input-label">{{ form.events_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.events_input }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="quests-field">
+                                                    <h5 class="input-label">{{ form.quests_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.quests_input }}</div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                    </li>
+                                    <!-- List field: Abyss, Others -->
+                                    <li class="list-group-item border-0">
+                                        <div class="row abyss-others">
+                                            <div class="col-6">
+                                                <div class="abbys-field">
+                                                    <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.others_input }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="others-field">
+                                                    <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
+                                                    <div class="input-field">{{ form.others_input }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <!-- Validation field-->
+                                    {% if form.date_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                         <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.date_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.welkin_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                         <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.welkin_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.primogems_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.primogems_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.starglitter_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.starglitter_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.pity_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.pity_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.events_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.events_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.quests_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.quests_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% elif form.others_input.errors %}
+                                    <li class="list-group-item d-grid gap-2 rounded">
+                                        <!-- Check for validation errors -->
+                                        <h6 class="error text-center mb-0">
+                                            {{ form.others_input.errors.0 }}
+                                        </h6>
+                                    </li>
+                                    {% endif %}
+
+
+
+
+
+                                </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-6">
+                <div class="card middle">
+                    <h5 class="card-header">Nagłówek środkowej karty</h5>
+                    <div class="card-body">
+                        <ol>
+                            <li>Add abyss</li>
+                            <li>Check validation in forms</li>
+                            <li>Add validation alerts (JS)</li>
+                            <li>Change fonts (style, size).</li>
+                            <li>Make 3rd column</li>
+                            <li>Make 2nd column</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3">
+                <div class="card right-side">
+                     <h5 class="card-header text-center" style="background-color: #fd5b70;">
+                        Result
+                    </h5>
+                    <div class="card-body rounded" style="height: 28.813rem">
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Accumulated</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.0 as accumulated %}
+                                            <h5 class="text-center mb-0">{{ accumulated }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Earned</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.1 as earned %}
+                                            <h5 class="text-center mb-0">{{ earned }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Total</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.2 as total %}
+                                            <h5 class="text-center mb-0">{{ total }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-3">
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Pulls accumulated</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.3 as pulls_accumulated %}
+                                            <h5 class="text-center mb-0">{{ pulls_accumulated }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Pulls earned</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.4 as pulls_earned %}
+                                            <h5 class="text-center mb-0">{{ pulls_earned }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Pulls total</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.5 as pulls_total %}
+                                            <h5 class="text-center mb-0">{{ pulls_total }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-3">
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Days left</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.6 as days_left %}
+                                            <h5 class="text-center mb-0">{{ days_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Months left</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.7 as months_left %}
+                                            <h5 class="text-center mb-0">{{ months_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row bd-highlight mb-0">
+                                <div class="p-2 bd-highlight">
+                                    <h5 class="card-title text-center mb-0">Years left</h5>
+                                </div>
+                                <div class="ms-auto p-2 bd-highlight">
+                                    {% if result %}
+                                        {% with result.8 as years_left %}
+                                            <h5 class="text-center mb-0">{{ years_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">ablewski@agh.edu.pl</span>
+            </div>
+        </footer>
+
+        <!-- Dodaj link do biblioteki Bootstrap JavaScript (opcjonalnie) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    </body>
+</html>
