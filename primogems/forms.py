@@ -22,7 +22,10 @@ class MyForm(forms.Form):
     date_input = forms.DateField(
         label="Choose a date",
         widget=forms.DateInput(
-            attrs={"style": "text-align: center; padding: 0px", "type": "date"}
+            attrs={
+                "style": "text-align: center; padding: 0px; width: 9rem",
+                "type": "date",
+            }
         ),
         input_formats=["%Y-%m-%d"],
         validators=[validate_future_or_today],
@@ -32,7 +35,7 @@ class MyForm(forms.Form):
         label="Enter actual primogems",
         widget=forms.NumberInput(
             attrs={
-                "style": "text-align: center; padding: 0px",
+                "style": "text-align: center; padding: 0px; width: 16rem",
                 "placeholder": "Enter a positive value",
             }
         ),
@@ -43,7 +46,7 @@ class MyForm(forms.Form):
         label="Starglitter",
         widget=forms.NumberInput(
             attrs={
-                "style": "text-align: center; padding: 0px; width: 100%;",
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
             }
         ),
         validators=[validate_positive],
@@ -53,7 +56,7 @@ class MyForm(forms.Form):
         label="Pity",
         widget=forms.NumberInput(
             attrs={
-                "style": "text-align: center; padding: 0px; width: 100%;",
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
             }
         ),
         validators=[validate_pity],
@@ -67,7 +70,9 @@ class MyForm(forms.Form):
     events_input = forms.IntegerField(
         label="Events",
         widget=forms.NumberInput(
-            attrs={"style": "text-align: center; padding: 0px; width: 100%;"}
+            attrs={
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
+            }
         ),
         validators=[validate_positive],
         required=True,
@@ -75,7 +80,9 @@ class MyForm(forms.Form):
     quests_input = forms.IntegerField(
         label="Quests",
         widget=forms.NumberInput(
-            attrs={"style": "text-align: center; padding: 0px; width: 100%;"}
+            attrs={
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
+            }
         ),
         validators=[validate_positive],
         required=True,
@@ -83,7 +90,9 @@ class MyForm(forms.Form):
     others_input = forms.IntegerField(
         label="Others",
         widget=forms.NumberInput(
-            attrs={"style": "text-align: center; padding: 0px; width: 100%;"}
+            attrs={
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
+            }
         ),
         validators=[validate_positive],
         required=True,
