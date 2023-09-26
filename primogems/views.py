@@ -9,9 +9,7 @@ def primogems(request):
     if request.method == "GET":
         form = MyForm()
 
-    return HttpResponse(
-        render(request, "primogems/primogems_page.html", {"form": form})
-    )
+    return HttpResponse(render(request, "primogems/primogems_new.html", {"form": form}))
 
 
 def initialize(request):
@@ -44,7 +42,7 @@ def initialize(request):
         result = None
 
     return render(
-        request, "primogems/primogems_page.html", {"form": form, "result": result}
+        request, "primogems/primogems_new.html", {"form": form, "result": result}
     )
 
 
@@ -180,7 +178,6 @@ def count(
     quests,
     others,
 ):
-
     # Basic methods of acquiring primogems
     daily_tasks = days_left * 60
     abyss = abyss_left * 450
