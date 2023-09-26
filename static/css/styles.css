@@ -1,0 +1,248 @@
+body {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* Navbar styles*/
+nav {
+	background-color: #ffffff;
+}
+
+/* Jumbotron styles */
+.jumbotron {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin-bottom: 1.5rem;
+	background-color: #fdb2d3;
+	color: #212529;
+}
+
+.jumbotron-line {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.lead {
+	margin-bottom: 0;
+}
+
+/* Main container styles */
+.container.main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.col-xxl-3 {
+	display: flex;
+	justify-content: center;
+	height: 37.375rem;
+	width: 20.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.col-xxl-6 {
+	display: flex;
+	justify-content: center;
+	height: 37.375rem;
+	width: 40.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.card.left-side,
+.card.right-side {
+	height: 100%;
+	width: 20rem;
+}
+
+.card.middle {
+	height: 100%;
+	width: 38rem;
+	margin-right: 1.25rem;
+	margin-left: 1.25rem;
+}
+
+/* Left column styles */
+.card.left-side .card-body {
+	border: 1px solid rgb(224,224,224);
+	border-radius: 0.5rem;
+	background-color: #fd5b70;
+}
+
+ul.list-group {
+	width: 18rem;
+	gap: 1rem;
+}
+
+.primogems-button {
+	height: 2.75rem;
+	width: 18rem;
+	border-radius: 0.5rem;
+	border: none;
+	border-bottom: 1px solid rgb(224, 224, 224);
+	background-color: #ffffff;
+}
+
+.left-col-line {
+	margin: 0;
+}
+
+li.list-group-item {
+	padding: 0;
+	background-color: #fd5b70;
+}
+
+/* Date-Welkin row styles */
+.row.date-welkin {
+	width: 100%;
+	margin: 0;
+}
+
+.row.date-welkin .col-8,
+.row.date-welkin .col-4 {
+	padding: 0;
+}
+
+.date-field {
+	display: grid;
+	justify-content: center;
+	width: 11rem;
+	gap: 0.5rem;
+	margin-right: 1rem;
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid rgb(224,224,224);
+	background-color: #ffffff;
+}
+
+.date-field .input-label {
+	text-align: center;
+	margin: 0;
+}
+
+.welkin-field {
+	display: grid;
+	justify-content: center;
+	width: 6rem;
+	gap: 0.75rem;
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid rgb(224,224,224);
+	background-color: #ffffff;
+}
+
+.welkin-field .input-label {
+	text-align: center;
+	margin: 0;
+}
+
+.welkin-field .input-field {
+	display: grid;
+	height: 1.5rem;
+}
+
+/* Primogems row styles */
+.row.primogems {
+	width: 100%;
+	margin: 0;
+}
+
+.row.primogems .col-12 {
+	padding: 0;
+}
+
+.primogems-field {
+	display: grid;
+	justify-content: center;
+	width: 18rem;
+	gap: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid rgb(224,224,224);
+	background-color: #ffffff;
+}
+
+.primogems-field .input-label {
+	text-align: center;
+	margin: 0;
+}
+
+/* Star-Pity row styles */
+.row.star-pity,
+.row.events-quests,
+.row.abyss-others {
+	width: 100%;
+	margin: 0;
+}
+
+.row.star-pity .col-6,
+.row.events-quests .col-6,
+.row.abyss-others .col-6 {
+	padding: 0;
+}
+
+.star-field,
+.events-field,
+.abbys-field {
+	display: grid;
+	justify-content: center;
+	width: 8.5rem;
+	gap: 0.5rem;
+	margin-right: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid rgb(224,224,224);
+	background-color: #ffffff;
+}
+
+.star-field .input-label,
+.events-field .input-label,
+.abbys-field .input-label {
+	text-align: center;
+	margin: 0;
+}
+
+.pity-field,
+.quests-field,
+.others-field {
+	display: grid;
+	justify-content: center;
+	width: 8.5rem;
+	gap: 0.5rem;
+	margin-left: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 1rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid rgb(224,224,224);
+	background-color: #ffffff;
+}
+
+.pity-field .input-label,
+.quests-field .input-label,
+.others-field .input-label {
+	text-align: center;
+	margin: 0;
+}
+
+/* Disable arrows in number fields*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+ -webkit-appearance: none;
+}
+
+
+/* Footer styles */
+.footer {
+	text-align: center;
+	margin-top: auto;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: #fdb2d3;
+}
