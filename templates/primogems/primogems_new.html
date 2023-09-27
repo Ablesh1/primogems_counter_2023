@@ -50,156 +50,90 @@
                     <div class="card-body">
                         <form method="POST" action="{% url 'primogems:initialize' %}">
                             {% csrf_token %}
-                                <ul class="list-group">
-                                    <!-- Button field -->
-                                    <button type="submit" class="primogems-button">Count primogems</button>
-                                    <hr class="left-col-line">
-                                    <!-- List field: Date, Welkin-->
-                                    <li class="list-group-item border-0">
-                                        <div class="row date-welkin">
-                                            <div class="col-8">
-                                                <div class="date-field">
-                                                    <h5 class="input-label">{{ form.date_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.date_input }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="welkin-field">
-                                                    <h5 class="input-label">{{ form.welkin_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.welkin_input }}</div>
-                                                </div>
+                            <ul class="list-group">
+                                <!-- Button field -->
+                                <button type="submit" class="primogems-button">Count primogems</button>
+                                <hr class="left-col-line">
+                                <!-- List field: Date, Welkin-->
+                                <li class="list-group-item border-0">
+                                    <div class="row date-welkin">
+                                        <div class="col-8">
+                                            <div class="date-field">
+                                                <h5 class="input-label">{{ form.date_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.date_input }}</div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <!-- Primogems field -->
-                                    <li class="list-group-item border-0">
-                                        <div class="row primogems">
-                                            <div class="col-12">
-                                                <div class="primogems-field">
-                                                    <h5 class="input-label">{{ form.primogems_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.primogems_input }}</div>
-                                                </div>
+                                        <div class="col-4">
+                                            <div class="welkin-field">
+                                                <h5 class="input-label">{{ form.welkin_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.welkin_input }}</div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <!-- List field: Starglitter, Pity-->
-                                    <li class="list-group-item border-0">
-                                        <div class="row star-pity">
-                                            <div class="col-6">
-                                                <div class="star-field">
-                                                    <h5 class="input-label">{{ form.starglitter_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.starglitter_input }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="pity-field">
-                                                    <h5 class="input-label">{{ form.pity_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.pity_input }}</div>
-                                                </div>
+                                    </div>
+                                </li>
+                                <!-- Primogems field -->
+                                <li class="list-group-item border-0">
+                                    <div class="row primogems">
+                                        <div class="col-12">
+                                            <div class="primogems-field">
+                                                <h5 class="input-label">{{ form.primogems_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.primogems_input }}</div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <!-- List field: Events, Quests -->
-                                    <li class="list-group-item border-0">
-                                        <div class="row events-quests">
-                                            <div class="col-6">
-                                                <div class="events-field">
-                                                    <h5 class="input-label">{{ form.events_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.events_input }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="quests-field">
-                                                    <h5 class="input-label">{{ form.quests_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.quests_input }}</div>
-                                                </div>
-                                            </div>
-                                          </div>
-                                    </li>
-                                    <!-- List field: Abyss, Others -->
-                                    <li class="list-group-item border-0">
-                                        <div class="row abyss-others">
-                                            <div class="col-6">
-                                                <div class="abbys-field">
-                                                    <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.others_input }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="others-field">
-                                                    <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
-                                                    <div class="input-field">{{ form.others_input }}</div>
-                                                </div>
+                                    </div>
+                                </li>
+                                <!-- List field: Starglitter, Pity-->
+                                <li class="list-group-item border-0">
+                                    <div class="row star-pity">
+                                        <div class="col-6">
+                                            <div class="star-field">
+                                                <h5 class="input-label">{{ form.starglitter_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.starglitter_input }}</div>
                                             </div>
                                         </div>
-                                    </li>
-
-
-
-                                    <!-- Validation field-->
-                                    {% if form.date_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                         <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.date_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.welkin_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                         <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.welkin_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.primogems_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.primogems_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.starglitter_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.starglitter_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.pity_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.pity_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.events_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.events_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.quests_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.quests_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% elif form.others_input.errors %}
-                                    <li class="list-group-item d-grid gap-2 rounded">
-                                        <!-- Check for validation errors -->
-                                        <h6 class="error text-center mb-0">
-                                            {{ form.others_input.errors.0 }}
-                                        </h6>
-                                    </li>
-                                    {% endif %}
-
-
-
-
-
-                                </ul>
+                                        <div class="col-6">
+                                            <div class="pity-field">
+                                                <h5 class="input-label">{{ form.pity_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.pity_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- List field: Events, Quests -->
+                                <li class="list-group-item border-0">
+                                    <div class="row events-quests">
+                                        <div class="col-6">
+                                            <div class="events-field">
+                                                <h5 class="input-label">{{ form.events_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.events_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="quests-field">
+                                                <h5 class="input-label">{{ form.quests_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.quests_input }}</div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                </li>
+                                <!-- List field: Abyss, Others -->
+                                <li class="list-group-item border-0">
+                                    <div class="row abyss-others">
+                                        <div class="col-6">
+                                            <div class="abbys-field">
+                                                <h5 class="input-label">{{ form.abyss_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.abyss_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="others-field">
+                                                <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
+                                                <div class="input-field">{{ form.others_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </form>
                     </div>
                 </div>
@@ -210,8 +144,6 @@
                     <div class="card-body">
                         <ol>
                             <li>Add abyss</li>
-                            <li>Check validation in forms</li>
-                            <li>Add validation alerts (JS)</li>
                             <li>Change fonts (style, size).</li>
                             <li>Make 3rd column</li>
                             <li>Make 2nd column</li>
