@@ -24,6 +24,7 @@ def initialize(request):
             pity_input = form.cleaned_data["pity_input"]
             events_input = form.cleaned_data["events_input"]
             quests_input = form.cleaned_data["quests_input"]
+            abyss_input = form.cleaned_data["abyss_input"]
             others_input = form.cleaned_data["others_input"]
             # Call the main() method with the input data
             result = main(
@@ -34,6 +35,7 @@ def initialize(request):
                 pity_input,
                 events_input,
                 quests_input,
+                abyss_input,
                 others_input,
             )
         else:
@@ -176,11 +178,12 @@ def count(
     abyss_left,
     events,
     quests,
+    abyss_mean,
     others,
 ):
     # Basic methods of acquiring primogems
     daily_tasks = days_left * 60
-    abyss = abyss_left * 450
+    abyss = abyss_left * abyss_mean
     paimon_bargains = months_left * 5 * 160
 
     # Check if welkin is purchased
@@ -269,13 +272,13 @@ def count(
 
 # Here the variables are passed to multiple functions,
 # the returns of which are passed to count()
-def start(a, s, w, p, y, m, d, e, q, o):
+def start(a, s, w, p, y, m, d, e, q, abm, o):
     years_left = count_years(y)
     months_left = count_months(y, m)
     days_left = count_days(y, m, d)
     abyss_left = count_abyss(days_left, months_left)
 
-    return count(a, s, w, p, years_left, months_left, days_left, abyss_left, e, q, o)
+    return count(a, s, w, p, years_left, months_left, days_left, abyss_left, e, q, abm, o)
 
 
 # Here we assign values to the variables that are passed to start()
@@ -287,6 +290,7 @@ def main(
     input_pity,
     input_events,
     input_quests,
+    input_abyss_mean,
     input_others,
 ):
     # Split the input_data string into components
@@ -307,5 +311,6 @@ def main(
         input_day,
         input_events,
         input_quests,
+        input_abyss_mean,
         input_others,
     )
