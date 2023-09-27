@@ -18,6 +18,11 @@ def validate_pity(value):
         raise ValidationError("Enter the pity rate correctly.")
 
 
+def validate_abyss(value):
+    if value > 600 or value < 0:
+        raise ValidationError("Enter the abyss rate correctly.")
+
+
 class MyForm(forms.Form):
     date_input = forms.DateField(
         label="Choose a date",
@@ -25,6 +30,7 @@ class MyForm(forms.Form):
             attrs={
                 "style": "text-align: center; padding: 0px; width: 9rem",
                 "type": "date",
+                "min": date.today(),
             }
         ),
         input_formats=["%Y-%m-%d"],
@@ -37,6 +43,7 @@ class MyForm(forms.Form):
             attrs={
                 "style": "text-align: center; padding: 0px; width: 16rem",
                 "placeholder": "Enter a positive value",
+                "min": 0,
             }
         ),
         validators=[validate_positive],
@@ -47,6 +54,7 @@ class MyForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
             }
         ),
         validators=[validate_positive],
@@ -57,6 +65,8 @@ class MyForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
+                "max": 89,
             }
         ),
         validators=[validate_pity],
@@ -72,6 +82,7 @@ class MyForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
             }
         ),
         validators=[validate_positive],
@@ -82,9 +93,22 @@ class MyForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
             }
         ),
         validators=[validate_positive],
+        required=True,
+    )
+    abyss_input = forms.IntegerField(
+        label="Abyss",
+        widget=forms.NumberInput(
+            attrs={
+                "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
+                "max": 600,
+            }
+        ),
+        validators=[validate_abyss],
         required=True,
     )
     others_input = forms.IntegerField(
@@ -92,6 +116,7 @@ class MyForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 "style": "text-align: center; padding: 0px; width: 6.5rem;",
+                "min": 0,
             }
         ),
         validators=[validate_positive],
@@ -102,10 +127,11 @@ class MyForm(forms.Form):
         super().__init__(*args, **kwargs)
         # Initial values of fields
         self.fields["date_input"].initial = date.today()
-        self.fields["primogems_input"].initial = 10830
-        self.fields["starglitter_input"].initial = 28
-        self.fields["pity_input"].initial = 0
+        self.fields["primogems_input"].initial = 1000
+        self.fields["starglitter_input"].initial = 70
+        self.fields["pity_input"].initial = 5
         self.fields["welkin_input"].initial = True
         self.fields["events_input"].initial = 1600
         self.fields["quests_input"].initial = 0
+        self.fields["abyss_input"].initial = 500
         self.fields["others_input"].initial = 1900
