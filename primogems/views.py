@@ -278,7 +278,9 @@ def start(a, s, w, p, y, m, d, e, q, abm, o):
     days_left = count_days(y, m, d)
     abyss_left = count_abyss(days_left, months_left)
 
-    return count(a, s, w, p, years_left, months_left, days_left, abyss_left, e, q, abm, o)
+    return count(
+        a, s, w, p, years_left, months_left, days_left, abyss_left, e, q, abm, o
+    )
 
 
 # Here we assign values to the variables that are passed to start()
