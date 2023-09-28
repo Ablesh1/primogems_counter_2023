@@ -229,8 +229,12 @@ def count(
         others,
     )
 
-    print("\nGlitter used: \t\t" + str(final_star - final_star % 5))
-    print("Glitter unused: \t" + str(final_star % 5))
+    # Starglitter used to buy pulls
+    glitter_used = final_star - final_star % 5
+    glitter_unused = final_star % 5
+
+    print("\nGlitter used: \t\t" + str(glitter_used))
+    print("Glitter unused: \t" + str(glitter_unused))
 
     print("\n" + str(p))
     duplicate = "\tPulls"
@@ -266,6 +270,8 @@ def count(
         days_left,
         months_left,
         years_left,
+        glitter_used,
+        glitter_unused,
     ]
     return result
 
