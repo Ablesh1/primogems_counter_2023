@@ -86,6 +86,10 @@ ul.list-group {
 	background-color: #ffffff;
 }
 
+.primogems-button > h5 {
+	margin: 0;
+}
+
 .left-col-line {
 	margin: 0;
 }
@@ -119,7 +123,7 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.date-field .input-label {
+.date-field > h5 {
 	text-align: center;
 	margin: 0;
 }
@@ -136,12 +140,12 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.welkin-field .input-label {
+.welkin-field > h5 {
 	text-align: center;
 	margin: 0;
 }
 
-.welkin-field .input-field {
+.welkin-field > div {
 	display: grid;
 	height: 1.5rem;
 }
@@ -168,7 +172,7 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.primogems-field .input-label {
+.primogems-field > h5 {
 	text-align: center;
 	margin: 0;
 }
@@ -202,9 +206,9 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.star-field .input-label,
-.events-field .input-label,
-.abbys-field .input-label {
+.star-field > h5,
+.events-field > h5,
+.abbys-field > h5 {
 	text-align: center;
 	margin: 0;
 }
@@ -224,9 +228,36 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.pity-field .input-label,
-.quests-field .input-label,
-.others-field .input-label {
+.pity-field > h5,
+.quests-field > h5,
+.others-field > h5 {
+	text-align: center;
+	margin: 0;
+}
+
+/* Right column styles */
+.card.right-side .card-header {
+	text-align: center;
+	background-color: #fd5b70;
+}
+
+.right-col-line {
+	margin-top: 0.8125rem;
+	margin-bottom: 0.8125rem;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-container .output-left,
+.flex-container .output-right {
+	padding: 0.5rem;
+}
+
+.output-left > h5,
+.output-right > h5 {
 	text-align: center;
 	margin: 0;
 }
@@ -236,7 +267,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
  -webkit-appearance: none;
 }
-
 
 /* Footer styles */
 .footer {
