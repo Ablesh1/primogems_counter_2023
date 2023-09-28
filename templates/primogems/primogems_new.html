@@ -52,21 +52,23 @@
                             {% csrf_token %}
                             <ul class="list-group">
                                 <!-- Button field -->
-                                <button type="submit" class="primogems-button">Count primogems</button>
+                                <button type="submit" class="primogems-button">
+                                    <h5>Count primogems</h5>
+                                </button>
                                 <hr class="left-col-line">
                                 <!-- List field: Date, Welkin-->
                                 <li class="list-group-item border-0">
                                     <div class="row date-welkin">
                                         <div class="col-8">
                                             <div class="date-field">
-                                                <h5 class="input-label">{{ form.date_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.date_input }}</div>
+                                                <h5>{{ form.date_input.label_tag }}</h5>
+                                                <div>{{ form.date_input }}</div>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="welkin-field">
-                                                <h5 class="input-label">{{ form.welkin_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.welkin_input }}</div>
+                                                <h5>{{ form.welkin_input.label_tag }}</h5>
+                                                <div>{{ form.welkin_input }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -76,8 +78,8 @@
                                     <div class="row primogems">
                                         <div class="col-12">
                                             <div class="primogems-field">
-                                                <h5 class="input-label">{{ form.primogems_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.primogems_input }}</div>
+                                                <h5>{{ form.primogems_input.label_tag }}</h5>
+                                                <div>{{ form.primogems_input }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -87,14 +89,14 @@
                                     <div class="row star-pity">
                                         <div class="col-6">
                                             <div class="star-field">
-                                                <h5 class="input-label">{{ form.starglitter_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.starglitter_input }}</div>
+                                                <h5>{{ form.starglitter_input.label_tag }}</h5>
+                                                <div>{{ form.starglitter_input }}</div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="pity-field">
-                                                <h5 class="input-label">{{ form.pity_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.pity_input }}</div>
+                                                <h5>{{ form.pity_input.label_tag }}</h5>
+                                                <div>{{ form.pity_input }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -104,14 +106,14 @@
                                     <div class="row events-quests">
                                         <div class="col-6">
                                             <div class="events-field">
-                                                <h5 class="input-label">{{ form.events_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.events_input }}</div>
+                                                <h5>{{ form.events_input.label_tag }}</h5>
+                                                <div>{{ form.events_input }}</div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="quests-field">
-                                                <h5 class="input-label">{{ form.quests_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.quests_input }}</div>
+                                                <h5>{{ form.quests_input.label_tag }}</h5>
+                                                <div>{{ form.quests_input }}</div>
                                             </div>
                                         </div>
                                       </div>
@@ -121,14 +123,14 @@
                                     <div class="row abyss-others">
                                         <div class="col-6">
                                             <div class="abbys-field">
-                                                <h5 class="input-label">{{ form.abyss_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.abyss_input }}</div>
+                                                <h5>{{ form.abyss_input.label_tag }}</h5>
+                                                <div>{{ form.abyss_input }}</div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="others-field">
-                                                <h5 class="input-label">{{ form.others_input.label_tag }}</h5>
-                                                <div class="input-field">{{ form.others_input }}</div>
+                                                <h5>{{ form.others_input.label_tag }}</h5>
+                                                <div>{{ form.others_input }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -143,9 +145,7 @@
                     <h5 class="card-header">Nagłówek środkowej karty</h5>
                     <div class="card-body">
                         <ol>
-                            <li>Add abyss</li>
                             <li>Change fonts (style, size).</li>
-                            <li>Make 3rd column</li>
                             <li>Make 2nd column</li>
                         </ol>
                     </div>
@@ -153,133 +153,158 @@
             </div>
             <div class="col-xxl-3">
                 <div class="card right-side">
-                     <h5 class="card-header text-center" style="background-color: #fd5b70;">
+                    <h5 class="card-header">
                         Result
                     </h5>
-                    <div class="card-body rounded" style="height: 28.813rem">
-                        <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Accumulated</h5>
-                                </div>
-                                <div class="ms-auto p-2 bd-highlight">
-                                    {% if result %}
-                                        {% with result.0 as accumulated %}
-                                            <h5 class="text-center mb-0">{{ accumulated }}</h5>
-                                        {% endwith %}
-                                    {% endif %}
-                                </div>
+                    <div class="card-body">
+                        <div class="flex-container">
+                            <div class="output-left">
+                                <h5>Accumulated</h5>
+                            </div>
+                            <div class="output-right">
+                                {% if result %}
+                                    {% with result.0 as accumulated %}
+                                        <h5>{{ accumulated }}</h5>
+                                    {% endwith %}
+                                {% endif %}
                             </div>
                         </div>
-                        <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Earned</h5>
-                                </div>
-                                <div class="ms-auto p-2 bd-highlight">
-                                    {% if result %}
+                        <div class="flex-container">
+                            <div class="output-left">
+                                <h5>Earned</h5>
+                            </div>
+                            <div class="output-right">
+                                {% if result %}
                                         {% with result.1 as earned %}
-                                            <h5 class="text-center mb-0">{{ earned }}</h5>
+                                            <h5>{{ earned }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
-                        </div>
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Total</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Total</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.2 as total %}
-                                            <h5 class="text-center mb-0">{{ total }}</h5>
+                                            <h5>{{ total }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-3">
+                        <hr class="right-col-line">
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Pulls accumulated</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls acumulated</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.3 as pulls_accumulated %}
-                                            <h5 class="text-center mb-0">{{ pulls_accumulated }}</h5>
+                                            <h5>{{ pulls_accumulated }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Pulls earned</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls earned</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.4 as pulls_earned %}
-                                            <h5 class="text-center mb-0">{{ pulls_earned }}</h5>
+                                            <h5>{{ pulls_earned }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Pulls total</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls total</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.5 as pulls_total %}
-                                            <h5 class="text-center mb-0">{{ pulls_total }}</h5>
+                                            <h5>{{ pulls_total }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-3">
+                        <hr class="right-col-line">
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Days left</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Days left</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.6 as days_left %}
-                                            <h5 class="text-center mb-0">{{ days_left }}</h5>
+                                            <h5>{{ days_left }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Months left</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Months left</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.7 as months_left %}
-                                            <h5 class="text-center mb-0">{{ months_left }}</h5>
+                                            <h5>{{ months_left }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="d-flex flex-row bd-highlight mb-0">
-                                <div class="p-2 bd-highlight">
-                                    <h5 class="card-title text-center mb-0">Years left</h5>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Years left</h5>
                                 </div>
-                                <div class="ms-auto p-2 bd-highlight">
+                                <div class="output-right">
                                     {% if result %}
                                         {% with result.8 as years_left %}
                                             <h5 class="text-center mb-0">{{ years_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="right-col-line">
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Starglitter used</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.6 as glitter_used %}
+                                            <h5>{{ glitter_used }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Starglitter unused</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.7 as glitter_unused %}
+                                            <h5>{{ glitter_unused }}</h5>
                                         {% endwith %}
                                     {% endif %}
                                 </div>
@@ -294,7 +319,6 @@
                 <span class="text-muted">ablewski@agh.edu.pl</span>
             </div>
         </footer>
-
         <!-- Dodaj link do biblioteki Bootstrap JavaScript (opcjonalnie) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
