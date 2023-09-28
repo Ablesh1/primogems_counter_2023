@@ -1,0 +1,322 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Primogems counter</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="https://genshin.hoyoverse.com/en/">Website</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav" id="menu-buttons">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'home:home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://genshin-impact.fandom.com/wiki/Genshin_Impact">Fandom</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://genshin-impact-map.appsample.com/">Map</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4">Primogems counter</h1>
+                <hr class="jumbotron-line">
+                <p class="lead">Website devoted to the Genshin Impact exclusive currency</p>
+            </div>
+        </div>
+        <div class="container main">
+            <div class="col-xxl-3">
+                <div class="card left-side border-0">
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'primogems:initialize' %}">
+                            {% csrf_token %}
+                            <ul class="list-group">
+                                <!-- Button field -->
+                                <button type="submit" class="primogems-button">
+                                    <h5>Count primogems</h5>
+                                </button>
+                                <hr class="left-col-line">
+                                <!-- List field: Date, Welkin-->
+                                <li class="list-group-item border-0">
+                                    <div class="row date-welkin">
+                                        <div class="col-8">
+                                            <div class="date-field">
+                                                <h5>{{ form.date_input.label_tag }}</h5>
+                                                <div>{{ form.date_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="welkin-field">
+                                                <h5>{{ form.welkin_input.label_tag }}</h5>
+                                                <div>{{ form.welkin_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- Primogems field -->
+                                <li class="list-group-item border-0">
+                                    <div class="row primogems">
+                                        <div class="col-12">
+                                            <div class="primogems-field">
+                                                <h5>{{ form.primogems_input.label_tag }}</h5>
+                                                <div>{{ form.primogems_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- List field: Starglitter, Pity-->
+                                <li class="list-group-item border-0">
+                                    <div class="row star-pity">
+                                        <div class="col-6">
+                                            <div class="star-field">
+                                                <h5>{{ form.starglitter_input.label_tag }}</h5>
+                                                <div>{{ form.starglitter_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="pity-field">
+                                                <h5>{{ form.pity_input.label_tag }}</h5>
+                                                <div>{{ form.pity_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- List field: Events, Quests -->
+                                <li class="list-group-item border-0">
+                                    <div class="row events-quests">
+                                        <div class="col-6">
+                                            <div class="events-field">
+                                                <h5>{{ form.events_input.label_tag }}</h5>
+                                                <div>{{ form.events_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="quests-field">
+                                                <h5>{{ form.quests_input.label_tag }}</h5>
+                                                <div>{{ form.quests_input }}</div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                </li>
+                                <!-- List field: Abyss, Others -->
+                                <li class="list-group-item border-0">
+                                    <div class="row abyss-others">
+                                        <div class="col-6">
+                                            <div class="abbys-field">
+                                                <h5>{{ form.abyss_input.label_tag }}</h5>
+                                                <div>{{ form.abyss_input }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="others-field">
+                                                <h5>{{ form.others_input.label_tag }}</h5>
+                                                <div>{{ form.others_input }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-6">
+                <div class="card middle">
+                    <div class="card-body">
+                         <img src="{% static 'img/paimon.jpg' %}" alt="paimon.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3">
+                <div class="card right-side">
+                    <h5 class="card-header">
+                        Result
+                    </h5>
+                    <div class="card-body">
+                        <div class="flex-container">
+                            <div class="output-left">
+                                <h5>Accumulated</h5>
+                            </div>
+                            <div class="output-right">
+                                {% if result %}
+                                    {% with result.0 as accumulated %}
+                                        <h5>{{ accumulated }}</h5>
+                                    {% endwith %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="flex-container">
+                            <div class="output-left">
+                                <h5>Earned</h5>
+                            </div>
+                            <div class="output-right">
+                                {% if result %}
+                                        {% with result.1 as earned %}
+                                            <h5>{{ earned }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Total</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.2 as total %}
+                                            <h5>{{ total }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="right-col-line">
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls acumulated</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.3 as pulls_accumulated %}
+                                            <h5>{{ pulls_accumulated }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls earned</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.4 as pulls_earned %}
+                                            <h5>{{ pulls_earned }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Pulls total</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.5 as pulls_total %}
+                                            <h5>{{ pulls_total }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="right-col-line">
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Days left</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.6 as days_left %}
+                                            <h5>{{ days_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Months left</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.7 as months_left %}
+                                            <h5>{{ months_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Years left</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.8 as years_left %}
+                                            <h5 class="text-center mb-0">{{ years_left }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="right-col-line">
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Starglitter used</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.9 as glitter_used %}
+                                            <h5>{{ glitter_used }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex-container">
+                                <div class="output-left">
+                                    <h5>Starglitter unused</h5>
+                                </div>
+                                <div class="output-right">
+                                    {% if result %}
+                                        {% with result.10 as glitter_unused %}
+                                            <h5>{{ glitter_unused }}</h5>
+                                        {% endwith %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">ablewski@agh.edu.pl</span>
+            </div>
+        </footer>
+        <!-- Dodaj link do biblioteki Bootstrap JavaScript (opcjonalnie) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    </body>
+</html>
