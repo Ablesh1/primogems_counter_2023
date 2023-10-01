@@ -19,13 +19,20 @@ nav {
 	color: #212529;
 }
 
+.jumbotron-big-text {
+	font-size: 56px;
+    font-weight: 300;
+}
+
 .jumbotron-line {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 }
 
-.lead {
-	margin-bottom: 0;
+.jumbotron-small-text {
+	font-size: 20px;
+	font-weight: 300;
+	margin: 0;
 }
 
 /* Main container styles */
@@ -88,6 +95,7 @@ ul.list-group {
 }
 
 .primogems-button > h5 {
+	text-align: center;
 	margin: 0;
 }
 
@@ -100,14 +108,21 @@ li.list-group-item {
 	background-color: #fd5b70;
 }
 
-/* Date-Welkin row styles */
-.row.date-welkin {
+.row.date-welkin,
+.row.primogems,
+.row.star-pity,
+.row.events-quests,
+.row.abyss-others {
 	width: 100%;
 	margin: 0;
 }
 
 .row.date-welkin .col-8,
-.row.date-welkin .col-4 {
+.row.date-welkin .col-4,
+.row.primogems .col-12,
+.row.star-pity .col-6,
+.row.events-quests .col-6,
+.row.abyss-others .col-6 {
 	padding: 0;
 }
 
@@ -124,11 +139,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.date-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
 .welkin-field {
 	display: grid;
 	justify-content: center;
@@ -141,26 +151,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.welkin-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
-.welkin-field > div {
-	display: grid;
-	height: 1.5rem;
-}
-
-/* Primogems row styles */
-.row.primogems {
-	width: 100%;
-	margin: 0;
-}
-
-.row.primogems .col-12 {
-	padding: 0;
-}
-
 .primogems-field {
 	display: grid;
 	justify-content: center;
@@ -171,25 +161,6 @@ li.list-group-item {
 	border-radius: 0.5rem;
 	border-bottom: 1px solid rgb(224,224,224);
 	background-color: #ffffff;
-}
-
-.primogems-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
-/* Star-Pity row styles */
-.row.star-pity,
-.row.events-quests,
-.row.abyss-others {
-	width: 100%;
-	margin: 0;
-}
-
-.row.star-pity .col-6,
-.row.events-quests .col-6,
-.row.abyss-others .col-6 {
-	padding: 0;
 }
 
 .star-field,
@@ -207,13 +178,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.star-field > h5,
-.events-field > h5,
-.abbys-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
 .pity-field,
 .quests-field,
 .others-field {
@@ -229,11 +193,23 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
+.date-field > h5,
+.welkin-field > h5,
+.primogems-field > h5,
+.star-field > h5,
+.events-field > h5,
+.abbys-field > h5,
 .pity-field > h5,
 .quests-field > h5,
 .others-field > h5 {
 	text-align: center;
+	font-weight: 400;
 	margin: 0;
+}
+
+.welkin-field > div {
+	display: grid;
+	height: 1.5rem;
 }
 
 /* Middle column styles */
@@ -271,6 +247,7 @@ li.list-group-item {
 .output-left > h5,
 .output-right > h5 {
 	text-align: center;
+	font-weight: 400;
 	margin: 0;
 }
 
