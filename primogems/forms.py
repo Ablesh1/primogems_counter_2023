@@ -127,11 +127,11 @@ class MyForm(forms.Form):
         super().__init__(*args, **kwargs)
         # Initial values of fields
         self.fields["date_input"].initial = date.today()
-        self.fields["primogems_input"].initial = 1000
+        self.fields["primogems_input"].initial = 2400
         self.fields["starglitter_input"].initial = 70
         self.fields["pity_input"].initial = 5
         self.fields["welkin_input"].initial = True
-        self.fields["events_input"].initial = 1600
+        self.fields["events_input"].initial = 800
         self.fields["quests_input"].initial = 0
         self.fields["abyss_input"].initial = 500
-        self.fields["others_input"].initial = 1900
+        self.fields["others_input"].initial = 300
