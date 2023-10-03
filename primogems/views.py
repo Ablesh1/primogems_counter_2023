@@ -9,7 +9,9 @@ def primogems(request):
     if request.method == "GET":
         form = MyForm()
 
-    return HttpResponse(render(request, "primogems/primogems_new.html", {"form": form}))
+    return HttpResponse(
+        render(request, "primogems/primogems_page.html", {"form": form})
+    )
 
 
 def initialize(request):
@@ -44,7 +46,7 @@ def initialize(request):
         result = None
 
     return render(
-        request, "primogems/primogems_new.html", {"form": form, "result": result}
+        request, "primogems/primogems_page.html", {"form": form, "result": result}
     )
 
 

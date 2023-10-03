@@ -10,13 +10,23 @@ nav {
 	background-color: #ffffff;
 }
 
+.nav-link {
+	text-align: start;
+	font-size: 20px;
+	font-weight: 400;
+}
+
 /* Jumbotron styles */
 .jumbotron {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	margin-bottom: 1.5rem;
 	background-color: #fdb2d3;
-	color: #212529;
+}
+
+.jumbotron-big-text {
+	font-size: 56px;
+    font-weight: 300;
 }
 
 .jumbotron-line {
@@ -24,15 +34,17 @@ nav {
 	margin-bottom: 0.5rem;
 }
 
-.lead {
-	margin-bottom: 0;
+.jumbotron-small-text {
+	font-size: 20px;
+	font-weight: 300;
+	margin: 0;
 }
 
 /* Main container styles */
 .container.main {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: flex-end;
 	flex-wrap: wrap;
 }
 
@@ -46,9 +58,8 @@ nav {
 
 .col-xxl-6 {
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	height: 37.375rem;
+	justify-content: center;
+	height: 32rem;
 	width: 40.5rem;
 	margin-bottom: 1.5rem;
 }
@@ -60,7 +71,7 @@ nav {
 }
 
 .card.middle {
-	height: 32rem;
+	height: 100%;
 	width: 38rem;
 	margin-right: 1.25rem;
 	margin-left: 1.25rem;
@@ -68,8 +79,8 @@ nav {
 
 /* Left column styles */
 .card.left-side .card-body {
-	border: 1px solid rgb(224,224,224);
 	border-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 	background-color: #fd5b70;
 }
 
@@ -88,6 +99,7 @@ ul.list-group {
 }
 
 .primogems-button > h5 {
+	text-align: center;
 	margin: 0;
 }
 
@@ -100,14 +112,21 @@ li.list-group-item {
 	background-color: #fd5b70;
 }
 
-/* Date-Welkin row styles */
-.row.date-welkin {
+.row.date-welkin,
+.row.primogems,
+.row.star-pity,
+.row.events-quests,
+.row.abyss-others {
 	width: 100%;
 	margin: 0;
 }
 
 .row.date-welkin .col-8,
-.row.date-welkin .col-4 {
+.row.date-welkin .col-4,
+.row.primogems .col-12,
+.row.star-pity .col-6,
+.row.events-quests .col-6,
+.row.abyss-others .col-6 {
 	padding: 0;
 }
 
@@ -124,11 +143,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.date-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
 .welkin-field {
 	display: grid;
 	justify-content: center;
@@ -141,26 +155,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.welkin-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
-.welkin-field > div {
-	display: grid;
-	height: 1.5rem;
-}
-
-/* Primogems row styles */
-.row.primogems {
-	width: 100%;
-	margin: 0;
-}
-
-.row.primogems .col-12 {
-	padding: 0;
-}
-
 .primogems-field {
 	display: grid;
 	justify-content: center;
@@ -171,25 +165,6 @@ li.list-group-item {
 	border-radius: 0.5rem;
 	border-bottom: 1px solid rgb(224,224,224);
 	background-color: #ffffff;
-}
-
-.primogems-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
-/* Star-Pity row styles */
-.row.star-pity,
-.row.events-quests,
-.row.abyss-others {
-	width: 100%;
-	margin: 0;
-}
-
-.row.star-pity .col-6,
-.row.events-quests .col-6,
-.row.abyss-others .col-6 {
-	padding: 0;
 }
 
 .star-field,
@@ -207,13 +182,6 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
-.star-field > h5,
-.events-field > h5,
-.abbys-field > h5 {
-	text-align: center;
-	margin: 0;
-}
-
 .pity-field,
 .quests-field,
 .others-field {
@@ -229,11 +197,23 @@ li.list-group-item {
 	background-color: #ffffff;
 }
 
+.date-field > h5,
+.welkin-field > h5,
+.primogems-field > h5,
+.star-field > h5,
+.events-field > h5,
+.abbys-field > h5,
 .pity-field > h5,
 .quests-field > h5,
 .others-field > h5 {
 	text-align: center;
+	font-weight: 400;
 	margin: 0;
+}
+
+.welkin-field > div {
+	display: grid;
+	height: 1.5rem;
 }
 
 /* Middle column styles */
@@ -241,6 +221,8 @@ li.list-group-item {
 	display: flex;
 	justify-content: center;
 	align-items: end;
+	border-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 }
 
 .card.middle img {
@@ -250,7 +232,17 @@ li.list-group-item {
 /* Right column styles */
 .card.right-side .card-header {
 	text-align: center;
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
+	border-bottom: none;
 	background-color: #fd5b70;
+}
+
+.card.right-side .card-body {
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 }
 
 .right-col-line {
@@ -271,6 +263,7 @@ li.list-group-item {
 .output-left > h5,
 .output-right > h5 {
 	text-align: center;
+	font-weight: 600;
 	margin: 0;
 }
 
