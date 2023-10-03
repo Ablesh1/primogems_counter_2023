@@ -10,13 +10,18 @@ nav {
 	background-color: #ffffff;
 }
 
+.nav-link {
+	text-align: start;
+	font-size: 20px;
+	font-weight: 400;
+}
+
 /* Jumbotron styles */
 .jumbotron {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	margin-bottom: 1.5rem;
 	background-color: #fdb2d3;
-	color: #212529;
 }
 
 .jumbotron-big-text {
@@ -39,7 +44,7 @@ nav {
 .container.main {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: flex-end;
 	flex-wrap: wrap;
 }
 
@@ -53,9 +58,8 @@ nav {
 
 .col-xxl-6 {
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	height: 37.375rem;
+	justify-content: center;
+	height: 32rem;
 	width: 40.5rem;
 	margin-bottom: 1.5rem;
 }
@@ -67,7 +71,7 @@ nav {
 }
 
 .card.middle {
-	height: 32rem;
+	height: 100%;
 	width: 38rem;
 	margin-right: 1.25rem;
 	margin-left: 1.25rem;
@@ -247,7 +251,7 @@ li.list-group-item {
 .output-left > h5,
 .output-right > h5 {
 	text-align: center;
-	font-weight: 400;
+	font-weight: 600;
 	margin: 0;
 }
 
