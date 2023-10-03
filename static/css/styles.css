@@ -79,8 +79,8 @@ nav {
 
 /* Left column styles */
 .card.left-side .card-body {
-	border: 1px solid rgb(224,224,224);
 	border-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 	background-color: #fd5b70;
 }
 
@@ -221,6 +221,8 @@ li.list-group-item {
 	display: flex;
 	justify-content: center;
 	align-items: end;
+	border-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 }
 
 .card.middle img {
@@ -230,7 +232,17 @@ li.list-group-item {
 /* Right column styles */
 .card.right-side .card-header {
 	text-align: center;
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
+	border-bottom: none;
 	background-color: #fd5b70;
+}
+
+.card.right-side .card-body {
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	border: 1px solid rgb(224,224,224);
 }
 
 .right-col-line {
