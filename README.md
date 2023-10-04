@@ -24,6 +24,11 @@ cd path_to_project_location
 ```
 python manage.py runserver
 ```
+5. Open the web application on localhost in the browser
+```
+http://127.0.0.1:8000/primogems/
+```
+
 ## Screenshots
 ![](static/img/screenshot_1.png)
 ![](static/img/screenshot_2.png)
